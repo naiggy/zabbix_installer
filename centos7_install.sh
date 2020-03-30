@@ -33,7 +33,10 @@ setenforce 0
 systemctl stop firewalld
 systemctl disable firewalld
 
-sed -i -e "s/SELINUX=enforcing/SELINUX=disabled/" /etc/selinux/config
+if [ -e "/etc/selinux/config" ];then
+    sed -i -e "s/SELINUX=enforcing/SELINUX=disabled/" /etc/selinux/config
+fi
+
 
 yum clean all
 
