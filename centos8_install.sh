@@ -85,4 +85,4 @@ chmod 644 /etc/zabbix/web/zabbix.conf.php
 systemctl restart httpd
 
 echo "Zabbix Install Completed."
-echo "Copyright ? Park.iggy"
+echo "Product by Park.iggy<naiggy@gmail.com>"
