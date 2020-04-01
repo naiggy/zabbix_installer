@@ -99,8 +99,13 @@ global \$DB; \n\
 echo -e $TEXT > /etc/zabbix/web/zabbix.conf.php
 chmod 644 /etc/zabbix/web/zabbix.conf.php
 
-systemctl restart zabbix-server zabbix-agent httpd
-systemctl enable zabbix-server zabbix-agent httpd
+if [ "$VER" == "1" ];then
+    systemctl restart zabbix-server zabbix-agent httpd
+    systemctl enable zabbix-server zabbix-agent httpd
+elif [ "$VER" == "2" ];then
+    systemctl restart zabbix-server zabbix-agent httpd rh-php72-php-fpm
+    systemctl enable zabbix-server zabbix-agent httpd rh-php72-php-fpm
+fi
 
 echo "Zabbix Install Completed."
 echo "Product by Park.iggy<naiggy@gmail.com>"
