@@ -74,8 +74,6 @@ echo "$SQL" | mysql -u root
 
 zcat `find  /usr/share/doc/zabbix-server-mysql* |  grep create.sql.gz` | mysql -uzabbix -p${PASSWORD} zabbix
 
-
-
 sed -i -e "s/# DBPassword=/DBPassword=${PASSWORD}/" /etc/zabbix/zabbix_server.conf
 
 TEXT="
