@@ -44,8 +44,6 @@ dnf install -y zabbix-server-mysql zabbix-web-mysql zabbix-apache-conf zabbix-ag
 dnf install -y mariadb-server.x86_64
 systemctl start mariadb
 
-#!/bin/sh
-
 DB=mysql
 PASSWORD="Parkzabbix"
 
