@@ -82,9 +82,12 @@ global \$DB; \n\
 \$ZBX_SERVER_NAME = 'park1'; \n\
 \n\
 \$IMAGE_FORMAT_DEFAULT = IMAGE_FORMAT_PNG; "
+
 echo -e $TEXT > /etc/zabbix/web/zabbix.conf.php
 chmod 644 /etc/zabbix/web/zabbix.conf.php
-systemctl restart httpd
+
+systemctl restart zabbix-server httpd
+systemctl enable zabbix-server httpd mariadb
 
 echo "Zabbix Install Completed."
 echo "Product by Park.iggy<naiggy@gmail.com>"
