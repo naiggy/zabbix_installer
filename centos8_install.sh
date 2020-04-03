@@ -5,7 +5,7 @@ echo "What version do you want to install?"
 echo "1) 4.0 LTS"
 echo "2) Pre 5.0"
 
-read -p "Please, select a version: " yn
+read -p "Please, select number 1 or 2 : " yn
 
 case "$yn" in
     1) echo "Do you want to install 4.0 LTS?";
