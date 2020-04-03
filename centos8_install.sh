@@ -39,9 +39,8 @@ fi
 
 dnf clean all
 
-dnf install -y zabbix-server-mysql zabbix-web-mysql zabbix-apache-conf zabbix-agent
-
 dnf install -y mariadb-server.x86_64
+dnf install -y zabbix-server-mysql zabbix-web-mysql zabbix-agent
 systemctl start mariadb
 
 DB=mysql
