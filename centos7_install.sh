@@ -3,17 +3,17 @@
 VER=0
 echo "What version do you want to install?"
 echo "1) 4.0 LTS"
-##echo "2) Pre 5.0"
+echo "2) Pre 5.0"
 
-read -p "Please, select number 1 : " yn
+read -p "Please, select number 1 or 2 : " yn
 
 case "$yn" in
     1) echo "Do you want to install 4.0 LTS?";
      VER=1;
      ;;
-    ##2) echo "Do you want to install Pre 5.0?";
-    ## VER=2;
-    ## ;;
+    2) echo "Do you want to install Pre 5.0?";
+     VER=2;
+     ;;
    *) echo "Abort the installation.";
      exit ;;
 esac
@@ -24,6 +24,7 @@ if [ "$VER" == "1" ];then
     rpm -Uvh https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-2.el7.noarch.rpm
 elif [ "$VER" == "2" ];then
     rpm -Uvh https://repo.zabbix.com/zabbix/4.5/rhel/7/x86_64/zabbix-release-4.5-2.el7.noarch.rpm
+    yum update -y
 else
     echo "Abort the installation."
     exit;
@@ -59,6 +60,7 @@ fi
 
 yum install -y mariadb-server.x86_64
 systemctl start mariadb
+systemctl enable mariadb
 
 
 DB=mysql
@@ -103,8 +105,9 @@ if [ "$VER" == "1" ];then
     systemctl restart zabbix-server zabbix-agent httpd
     systemctl enable zabbix-server zabbix-agent httpd
 elif [ "$VER" == "2" ];then
-    systemctl restart zabbix-server zabbix-agent httpd rh-php72-php-fpm
-    systemctl enable zabbix-server zabbix-agent httpd rh-php72-php-fpm
+    systemctl restart zabbix-server httpd rh-php72-php-fpm
+    systemctl enable zabbix-server httpd rh-php72-php-fpm
+    echo "Please, reboot now."
 fi
 
 echo "Zabbix Install Completed."
