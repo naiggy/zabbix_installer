@@ -25,6 +25,7 @@ if [ "$VER" == "1" ];then
 elif [ "$VER" == "2" ];then
     rpm -Uvh https://repo.zabbix.com/zabbix/4.5/rhel/7/x86_64/zabbix-release-4.5-2.el7.noarch.rpm
     yum update -y
+    
 else
     echo "Abort the installation."
     exit;
@@ -32,7 +33,7 @@ fi
 
 if type setenforce >/dev/null 2>&1; then
     RET=`getenforce`
-    if [ "${RET}" =! "Disabled" ];then
+    if [ "${RET}" != "Disabled" ];then
         setenforce 0
     fi
 fi
