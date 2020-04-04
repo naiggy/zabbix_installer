@@ -39,8 +39,16 @@ fi
 
 dnf clean all
 
-dnf install -y mariadb-server.x86_64
-dnf install -y zabbix-server-mysql zabbix-web-mysql zabbix-agent
+dnf install -y mariadb-server.x86_64 httpd
+
+if [ "$VER" == "1" ];then
+    dnf install -y zabbix-server-mysql zabbix-web-mysql zabbix-agent
+elif [ "$VER" == "2" ];then
+    dnf install -y zabbix-server-mysql zabbix-web-mysql zabbix-apache-conf zabbix-agent
+fi
+
+sed -i -e "s/\[mariadb\]/\[mariadb\]\ninnodb-strict-mode=0/" /etc/my.cnf.d/mariadb-server.cnf
+
 systemctl start mariadb
 
 DB=mysql
@@ -85,8 +93,8 @@ global \$DB; \n\
 echo -e $TEXT > /etc/zabbix/web/zabbix.conf.php
 chmod 644 /etc/zabbix/web/zabbix.conf.php
 
-systemctl restart zabbix-server httpd
-systemctl enable zabbix-server httpd mariadb
+systemctl restart zabbix-server httpd php-fpm
+systemctl enable zabbix-server httpd php-fpm mariadb
 
 echo "Zabbix Install Completed."
 echo "Product by Park.iggy<naiggy@gmail.com>"
