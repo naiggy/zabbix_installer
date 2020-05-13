@@ -3,7 +3,7 @@
 VER=0
 echo "What version do you want to install?"
 echo "1) 4.0 LTS"
-echo "2) Pre 5.0"
+echo "2) 5.0 LTS"
 
 read -p "Please, select number 1 or 2 : " yn
 
@@ -11,7 +11,7 @@ case "$yn" in
     1) echo "Do you want to install 4.0 LTS?";
      VER=1;
      ;;
-    2) echo "Do you want to install Pre 5.0?";
+    2) echo "Do you want to install 5.0 LTS?";
      VER=2;
      ;;
    *) echo "Abort the installation.";
@@ -23,7 +23,7 @@ echo "VER="$VER
 if [ "$VER" == "1" ];then
     rpm -Uvh https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-2.el7.noarch.rpm
 elif [ "$VER" == "2" ];then
-    rpm -Uvh https://repo.zabbix.com/zabbix/4.5/rhel/7/x86_64/zabbix-release-4.5-2.el7.noarch.rpm
+    rpm -Uvh https://repo.zabbix.com/zabbix/5.0/rhel/7/x86_64/zabbix-release-5.0-1.el7.noarch.rpm
     yum update -y
     
 else
