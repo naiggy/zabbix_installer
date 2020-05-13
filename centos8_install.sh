@@ -3,7 +3,7 @@
 VER=0
 echo "What version do you want to install?"
 echo "1) 4.0 LTS"
-echo "2) Pre 5.0"
+echo "2) 5.0 LTS"
 
 read -p "Please, select number 1 or 2 : " yn
 
@@ -23,7 +23,7 @@ echo "VER="$VER
 if [ "$VER" == "1" ];then
     rpm -Uvh https://repo.zabbix.com/zabbix/4.0/rhel/8/x86_64/zabbix-release-4.0-2.el8.noarch.rpm
 elif [ "$VER" == "2" ];then
-    rpm -Uvh https://repo.zabbix.com/zabbix/4.5/rhel/8/x86_64/zabbix-release-4.5-2.el8.noarch.rpm
+    rpm -Uvh https://repo.zabbix.com/zabbix/5.0/rhel/8/x86_64/zabbix-release-5.0-1.el8.noarch.rpm
 else
     echo "Abort the installation."
     exit;
