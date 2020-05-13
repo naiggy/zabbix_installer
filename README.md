@@ -12,5 +12,5 @@ bash centos8_install.sh<br>
 MIT
 
 <h1>AWS　script</h1>
-Amazon linux2 zabbix 5.0 Install script
+Amazon linux2 zabbix 5.0 Install script<br>
 https://naiggy.blogspot.com/2020/04/amazon-linux-2-ami-zabbix-50.html
