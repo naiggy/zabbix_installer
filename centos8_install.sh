@@ -11,7 +11,7 @@ case "$yn" in
     1) echo "Do you want to install 4.0 LTS?";
      VER=1;
      ;;
-    2) echo "Do you want to install Pre 5.0?";
+    2) echo "Do you want to install 5.0 LTS?";
      VER=2;
      ;;
    *) echo "Abort the installation.";
