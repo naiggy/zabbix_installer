@@ -4,8 +4,8 @@ zabbix install script
 <h1>Getting Started</h1>
 switch root<br>
 wget https://github.com/naiggy/zabbix_installer/archive/refs/heads/master.zip<br>
-unzip master.zip<br>
-cd zabbix_installer-master/<br>
+unzip main.zip<br>
+cd zabbix_installer-main <br>
 bash centos8_install.sh<br>
 
 <h1>License</h1>
